@@ -1,0 +1,33 @@
+name: Nova aula ou melhoria de conteúdo
+description: Solicite criação, aprofundamento ou correção de uma sessão.
+title: "[Conteúdo] Semana XX, Dia YY — "
+labels: []
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Sessão / caminho
+      placeholder: docs/weeks/week-04/day-03.md
+    validations:
+      required: true
+  - type: textarea
+    id: need
+    attributes:
+      label: Necessidade e resultado esperado
+      description: O que uma pessoa deve ser capaz de fazer após a mudança?
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Escopo e entregável
+      description: Liste restrições, exercício, teste e critério de aceite.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Fontes conferíveis
+      description: Prefira documentação oficial e exemplos executáveis.
+    validations:
+      required: false

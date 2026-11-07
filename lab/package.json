@@ -1,0 +1,13 @@
+{
+  "name": "ai-engineering-learning-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A base evolutiva do AI Engineering Assistant",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node --env-file=.env src/server.mjs",
+    "cli": "node --env-file=.env src/cli.mjs",
+    "test": "node --test test/*.test.mjs"
+  }
+}

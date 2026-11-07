@@ -1,0 +1,18 @@
+# Environment and keys
+.env
+**/.env
+!.env.example
+.venv/
+.env.local
+*.pem
+*.key
+# Generated docs and runtime
+site/
+__pycache__/
+*.pyc
+node_modules/
+coverage/
+.DS_Store
+# Personal progress by default
+progress.md
+notes/private/

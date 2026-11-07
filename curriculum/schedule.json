@@ -1,0 +1,681 @@
+{
+  "course": {
+    "id": "ai-software-engineering-roadmap",
+    "language": "pt-BR",
+    "weeks": 12,
+    "days_per_week": 5,
+    "hours_per_day": 3,
+    "total_hours": 180,
+    "audience": "Desenvolvedores com conhecimento prévio de programação"
+  },
+  "modules": [
+    {
+      "id": "m01",
+      "title": "Fundamentos de LLMs e avaliação inicial",
+      "weeks": [
+        1
+      ],
+      "objective": "Compreender os componentes de LLMs suficientes para tomar decisões de engenharia.",
+      "scope": "tokens; attention e transformers; embeddings; contexto; inferência; parâmetros; modelos abertos/proprietários; baseline de qualidade",
+      "project": "LLM Playground CLI com comparação de duas configurações e registro de evidências.",
+      "done": "Comparar pelo menos 5 prompts em dois modelos ou modos; registrar latência, respostas e limitações."
+    },
+    {
+      "id": "m02",
+      "title": "APIs de LLM e engenharia de contexto",
+      "weeks": [
+        2
+      ],
+      "objective": "Encapsular chamadas probabilísticas em uma API com contratos e resiliência.",
+      "scope": "papéis de mensagem; prompts; few-shot; structured outputs; schemas; streaming; retries; timeouts; custo; fallback",
+      "project": "AI Gateway local com provider abstrato, validações e testes.",
+      "done": "Gateway oferece endpoint /chat, testes automatizados e tratamento de respostas inválidas."
+    },
+    {
+      "id": "m03",
+      "title": "Desenvolvimento assistido por IA",
+      "weeks": [
+        3
+      ],
+      "objective": "Adotar workflow AI-first sem abdicar de revisão e testes humanos.",
+      "scope": "plano antes do código; agents de codificação; regras de projeto; TDD; review; segurança de sugestões; refatoração",
+      "project": "Feature implementada por ciclos de especificação, geração, revisão e testes.",
+      "done": "PR documenta prompts, decisões, diffs, testes, bugs de código gerado e ganhos reais."
+    },
+    {
+      "id": "m04",
+      "title": "RAG e busca semântica",
+      "weeks": [
+        4,
+        5
+      ],
+      "objective": "Conectar documentação a LLMs e medir a qualidade da recuperação.",
+      "scope": "chunking; ingestão; embeddings; pgvector; retrieval; citações; hybrid search; reranking; golden dataset",
+      "project": "Assistant de documentação com fontes e avaliação de retrieval.",
+      "done": "Responder consultas de documentos próprios, citar origem e recusar quando a evidência é insuficiente."
+    },
+    {
+      "id": "m05",
+      "title": "Function calling e MCP",
+      "weeks": [
+        6
+      ],
+      "objective": "Disponibilizar ferramentas sob contratos explícitos e limites de segurança.",
+      "scope": "JSON Schema de tools; ciclo de execução; MCP clients/servers; tools/resources/prompts; autenticação; controle de acesso",
+      "project": "Engineering MCP Server somente leitura com 3 tools.",
+      "done": "Demonstrar chamada validada, tratamento de erro e ausência de permissões destrutivas."
+    },
+    {
+      "id": "m06",
+      "title": "Agentes e workflows com estado",
+      "weeks": [
+        7,
+        8
+      ],
+      "objective": "Construir agentes limitados, testáveis e recuperáveis após falhas.",
+      "scope": "agent loop; ReAct; plan-and-execute; estado; memória; retry; orquestração; multiagente; aprovação humana",
+      "project": "Incident Investigation Agent com workflow e aprovação explícita.",
+      "done": "Investigação rastreável com evidências e limite de execução; nenhuma ação sensível sem aprovação."
+    },
+    {
+      "id": "m07",
+      "title": "Arquitetura de sistemas de IA",
+      "weeks": [
+        9
+      ],
+      "objective": "Justificar arquitetura AI-first em termos de trade-offs.",
+      "scope": "limites determinístico/probabilístico; design de componentes; model routing; cache; observabilidade; ameaça; C4; ADR",
+      "project": "Pacote de arquitetura e ADRs do sistema.",
+      "done": "Incluir diagramas, alternativas, tratamento de falhas, custos, segurança e decisões justificadas."
+    },
+    {
+      "id": "m08",
+      "title": "Avaliação, observabilidade e segurança",
+      "weeks": [
+        10
+      ],
+      "objective": "Verificar regressões de qualidade, custo, latência e segurança de IA.",
+      "scope": "golden dataset; avaliação de RAG e tools; traces; métricas; prompt injection; privacidade; guardrails; thresholds",
+      "project": "AI Evaluation Suite e relatório comparativo.",
+      "done": "Executar testes reproduzíveis e documentar taxa de acerto, latência e limites de risco."
+    },
+    {
+      "id": "m09",
+      "title": "Capstone e publicação",
+      "weeks": [
+        11,
+        12
+      ],
+      "objective": "Integrar o curso num produto demonstrável e reproduzível.",
+      "scope": "end-to-end; testes; deployment opcional; documentação; demonstração; medição; apresentação e próximos passos",
+      "project": "AI Engineering Assistant completo com documentação de execução local.",
+      "done": "Pessoa externa consegue clonar, iniciar modo mock, testar e seguir o roteiro da demonstração."
+    }
+  ],
+  "weeks": [
+    {
+      "number": 1,
+      "title": "Primeiros princípios e laboratório de LLM",
+      "module_id": "m01",
+      "days": [
+        {
+          "number": 1,
+          "title": "AI, ML e LLM em um mapa mental",
+          "concepts": "AI, ML, DL, GenAI, inferência",
+          "activity": "Desenhar fluxo entrada → inferência → saída; testar o CLI simulado.",
+          "deliverable": "Mapa conceitual + primeira execução do laboratório",
+          "acceptance": "Explica por escrito diferença entre LLM e software determinístico"
+        },
+        {
+          "number": 2,
+          "title": "Tokens, contexto e limites",
+          "concepts": "tokenização, janelas de contexto, truncamento",
+          "activity": "Criar cinco prompts e comparar respostas curtas/longas.",
+          "deliverable": "Tabela de 5 prompts e observações",
+          "acceptance": "Registra uma situação em que a informação faltante afeta a resposta"
+        },
+        {
+          "number": 3,
+          "title": "Embeddings e transformers no nível de engenharia",
+          "concepts": "representações vetoriais, attention, transformers",
+          "activity": "Simular busca por similaridade com exemplos de frases e discutir limitações.",
+          "deliverable": "Nota técnica de embeddings",
+          "acceptance": "Distingue geração de resposta de recuperação de conteúdo"
+        },
+        {
+          "number": 4,
+          "title": "Inferência e escolha de modelos",
+          "concepts": "temperatura, modelos locais e serviços, variabilidade",
+          "activity": "Configurar endpoint local ou remoto opcional e comparar dois settings.",
+          "deliverable": "Matriz inicial de modelos",
+          "acceptance": "Relata latência, output e disponibilidade; mock funciona sem credenciais"
+        },
+        {
+          "number": 5,
+          "title": "Entrega: LLM Playground",
+          "concepts": "medição, experimento controlado, revisão",
+          "activity": "Executar bateria de 5 casos e publicar documentação do playground.",
+          "deliverable": "Playground + relatório da semana",
+          "acceptance": "5 casos registrados, README claro e critérios de avaliação preenchidos"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "API e engenharia de contexto",
+      "module_id": "m02",
+      "days": [
+        {
+          "number": 1,
+          "title": "Desenho de uma AI API",
+          "concepts": "provider abstraction, context roles, HTTP",
+          "activity": "Definir interface de cliente LLM e contrato /chat com exemplo de requisição.",
+          "deliverable": "Contrato de API e esqueleto de provider",
+          "acceptance": "Uma chamada via modo mock funciona e falhas têm status definido"
+        },
+        {
+          "number": 2,
+          "title": "Prompt templates e exemplos",
+          "concepts": "system instructions, few-shot, input delimitation",
+          "activity": "Criar 3 templates para resumir, classificar e responder perguntas.",
+          "deliverable": "Biblioteca de prompts versionada",
+          "acceptance": "Cada template possui exemplo de entrada e saída esperada"
+        },
+        {
+          "number": 3,
+          "title": "JSON Schema e validação",
+          "concepts": "structured output, schema, parse, validação",
+          "activity": "Impor saída estruturada; construir fallback diante de JSON inválido.",
+          "deliverable": "Validador de resposta estruturada",
+          "acceptance": "Testes cobrem resposta válida e ao menos 2 inválidas"
+        },
+        {
+          "number": 4,
+          "title": "Resiliência e custo",
+          "concepts": "timeouts, retry, backoff, tokens, latência",
+          "activity": "Adicionar métricas e tratamento de 429, timeout e erro de provedor.",
+          "deliverable": "Camada de resiliência e métricas",
+          "acceptance": "Existe teste simulado para timeout e falha de rede"
+        },
+        {
+          "number": 5,
+          "title": "Entrega: AI Gateway",
+          "concepts": "API, observabilidade mínima, testes",
+          "activity": "Integrar templates, validação, testes e rotas.",
+          "deliverable": "AI Gateway local utilizável",
+          "acceptance": "Testes automatizados passam sem exigir chave de API"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Fluxo de trabalho AI-first",
+      "module_id": "m03",
+      "days": [
+        {
+          "number": 1,
+          "title": "Especificar antes de gerar",
+          "concepts": "requisitos, acceptance criteria, task breakdown",
+          "activity": "Escrever issue da nova feature para registrar sessões/medidas.",
+          "deliverable": "Especificação de feature",
+          "acceptance": "Critérios de aceite são verificáveis por teste"
+        },
+        {
+          "number": 2,
+          "title": "Contexto de repositório e regras para agentes",
+          "concepts": "AGENTS.md, contexto, instruções, limites",
+          "activity": "Pedir a um coding agent um plano; revisar antes de executar.",
+          "deliverable": "Plano aprovado e log de decisões",
+          "acceptance": "Plano respeita arquitetura e não adiciona dependências desnecessárias"
+        },
+        {
+          "number": 3,
+          "title": "Implementação em incrementos pequenos",
+          "concepts": "commits, TDD, revisão de diffs",
+          "activity": "Gerar implementação parcial com IA e fazer review manual.",
+          "deliverable": "Primeiro PR incremental",
+          "acceptance": "Diff compreensível e testes relevantes incluídos"
+        },
+        {
+          "number": 4,
+          "title": "Testes e refatoração assistidos",
+          "concepts": "edge cases, mocking, code review",
+          "activity": "Solicitar testes adversariais; corrigir vulnerabilidades ou lógica problemática.",
+          "deliverable": "Testes adicionais e melhorias",
+          "acceptance": "Pelo menos 3 casos negativos cobertos"
+        },
+        {
+          "number": 5,
+          "title": "Entrega: revisão AI-first",
+          "concepts": "lead time, produtividade, qualidade",
+          "activity": "Finalizar PR e registrar quanto tempo foi gasto gerando versus corrigindo.",
+          "deliverable": "Relatório de engenharia AI-first",
+          "acceptance": "Evidências de prompt, revisão e desempenho anexadas ao PR"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "RAG inicial e ingestão",
+      "module_id": "m04",
+      "days": [
+        {
+          "number": 1,
+          "title": "Desenhar pipeline de RAG",
+          "concepts": "ingestion, retrieval, generation, grounding",
+          "activity": "Definir 10 documentos de demonstração não sensíveis e perguntas-alvo.",
+          "deliverable": "Corpus e arquitetura do RAG",
+          "acceptance": "Perguntas têm documentos que comprovam respostas"
+        },
+        {
+          "number": 2,
+          "title": "Chunking e metadados",
+          "concepts": "chunks, overlap, títulos, origem",
+          "activity": "Criar pipeline de divisão mantendo referência de arquivo e seção.",
+          "deliverable": "Script de chunking",
+          "acceptance": "Cada trecho preserva metadata e possui ID reprodutível"
+        },
+        {
+          "number": 3,
+          "title": "Embeddings e persistência",
+          "concepts": "embedding model, similaridade, Postgres, pgvector",
+          "activity": "Configurar storage vetorial ou alternativa local simplificada.",
+          "deliverable": "Índice vetorial funcional",
+          "acceptance": "Consulta retorna top-k trechos com metadados"
+        },
+        {
+          "number": 4,
+          "title": "Recuperação e ranking",
+          "concepts": "semantic search, top-k, filtros",
+          "activity": "Criar função retrieve(query) e observar casos mal ranqueados.",
+          "deliverable": "Endpoint ou CLI de retrieval",
+          "acceptance": "Registra top-k para 5 perguntas antes de geração"
+        },
+        {
+          "number": 5,
+          "title": "Entrega: primeiro RAG",
+          "concepts": "pipeline de ingestão, fontes",
+          "activity": "Conectar retrieval à resposta e exigir referências.",
+          "deliverable": "RAG v1 com citações",
+          "acceptance": "5 perguntas respondidas com origem; lacunas sinalizadas"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Qualidade e melhoria do RAG",
+      "module_id": "m04",
+      "days": [
+        {
+          "number": 1,
+          "title": "Conjunto de avaliação",
+          "concepts": "golden set, recall@k, relevância",
+          "activity": "Construir dataset de 20 perguntas, incluindo casos sem resposta.",
+          "deliverable": "Dataset de avaliação v1",
+          "acceptance": "Pelo menos 5 perguntas sem evidência no corpus"
+        },
+        {
+          "number": 2,
+          "title": "Chunking comparado",
+          "concepts": "chunk size, overlap, fragmentação",
+          "activity": "Testar duas estratégias e comparar qualidade de retrieval.",
+          "deliverable": "Experimento documentado",
+          "acceptance": "Mostra tabela comparativa com 10 consultas"
+        },
+        {
+          "number": 3,
+          "title": "Hybrid search e filtros",
+          "concepts": "BM25, keyword, metadata, ranking",
+          "activity": "Adicionar busca lexical ou protótipo e testar filtros por serviço.",
+          "deliverable": "Retrieval híbrido demonstrável",
+          "acceptance": "Aponta casos em que lexical ajuda ou piora"
+        },
+        {
+          "number": 4,
+          "title": "Grounding e resistência a alucinação",
+          "concepts": "citation, abstention, query rewriting",
+          "activity": "Tratar pergunta ambígua e impor resposta de incerteza.",
+          "deliverable": "Política de resposta baseada em fontes",
+          "acceptance": "Sem fonte relevante, o assistant explicita desconhecimento"
+        },
+        {
+          "number": 5,
+          "title": "Entrega: Documentation Assistant",
+          "concepts": "qualidade, regressão, documentação",
+          "activity": "Executar golden set e publicar relatório de falhas do RAG.",
+          "deliverable": "Documentation Assistant v2",
+          "acceptance": "20 casos avaliados e limitações conhecidas registradas"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Tools e protocolo MCP",
+      "module_id": "m05",
+      "days": [
+        {
+          "number": 1,
+          "title": "Function calling na prática",
+          "concepts": "tools, schemas, input validation",
+          "activity": "Implementar ferramenta get_service_status com dados falsos.",
+          "deliverable": "Tool com contrato e teste",
+          "acceptance": "Entrada inválida é rejeitada antes da execução"
+        },
+        {
+          "number": 2,
+          "title": "Ciclo completo de tool use",
+          "concepts": "seleção, execução, resultado, loop limits",
+          "activity": "Construir orquestrador que receba tool request e devolva resultado.",
+          "deliverable": "Tool runner controlado",
+          "acceptance": "Máximo de chamadas configurável e logs por etapa"
+        },
+        {
+          "number": 3,
+          "title": "Fundamentos MCP",
+          "concepts": "server, client, tools, resources, prompts",
+          "activity": "Executar cliente+servidor MCP mínimo seguindo SDK atual.",
+          "deliverable": "Servidor MCP mínimo",
+          "acceptance": "Cliente descobre e chama ferramenta autorizada"
+        },
+        {
+          "number": 4,
+          "title": "Conectar ferramentas do assistant",
+          "concepts": "MCP adapter, autenticação, access control",
+          "activity": "Expor status, deployments e busca de docs em modo somente leitura.",
+          "deliverable": "Engineering MCP Server",
+          "acceptance": "As 3 tools funcionam com dados de demonstração"
+        },
+        {
+          "number": 5,
+          "title": "Entrega: segurança de tools",
+          "concepts": "fail closed, audit, rate limits",
+          "activity": "Testar inputs hostis, negação de tool e erros de disponibilidade.",
+          "deliverable": "MCP e threat checklist",
+          "acceptance": "Nenhuma tool altera infraestrutura e logs não incluem segredo"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Agente de investigação",
+      "module_id": "m06",
+      "days": [
+        {
+          "number": 1,
+          "title": "Agent loop e quando evitá-lo",
+          "concepts": "ReAct, determinismo, limites",
+          "activity": "Definir problema de incidente e comparar fluxo fixo versus agente.",
+          "deliverable": "Decision record sobre agents",
+          "acceptance": "Consegue justificar por que agent é necessário ou não"
+        },
+        {
+          "number": 2,
+          "title": "Planejamento e execução",
+          "concepts": "planner, executor, tool selection",
+          "activity": "Implementar plano de diagnóstico com etapas e evidências.",
+          "deliverable": "Planner simples",
+          "acceptance": "Plano inclui consulta a docs e deploys antes de recomendar ação"
+        },
+        {
+          "number": 3,
+          "title": "Estado e memória limitada",
+          "concepts": "session state, context pruning, checkpoint",
+          "activity": "Salvar progresso de investigação e recuperar após interrupção.",
+          "deliverable": "Workflow com estado persistente",
+          "acceptance": "Reinício não duplica ferramentas já executadas"
+        },
+        {
+          "number": 4,
+          "title": "Resiliência e cancelamento",
+          "concepts": "retry, max steps, timeout, fallback",
+          "activity": "Simular tool indisponível, resposta inválida e limite de iterações.",
+          "deliverable": "Agent loop controlado",
+          "acceptance": "Todos os 3 cenários terminam sem loop infinito"
+        },
+        {
+          "number": 5,
+          "title": "Entrega: Incident Agent v1",
+          "concepts": "rastreabilidade, provas, incerteza",
+          "activity": "Investigar incidente simulado e escrever diagnóstico com fontes.",
+          "deliverable": "Incident Investigation Agent",
+          "acceptance": "Diagnóstico separa observações, hipóteses e recomendações"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Orquestração e human-in-the-loop",
+      "module_id": "m06",
+      "days": [
+        {
+          "number": 1,
+          "title": "Do fluxo linear ao grafo",
+          "concepts": "state graphs, conditional routing",
+          "activity": "Representar investigação como estados e transições.",
+          "deliverable": "Diagrama e implementação de grafo",
+          "acceptance": "Cada transição tem condição clara e tratamento de erro"
+        },
+        {
+          "number": 2,
+          "title": "Agentes especialistas sob medida",
+          "concepts": "supervisor, specialists, handoff",
+          "activity": "Separar investigador de logs e investigador de documentação.",
+          "deliverable": "2 agentes ou 2 nós especialistas",
+          "acceptance": "Responsabilidades não se sobrepõem sem justificativa"
+        },
+        {
+          "number": 3,
+          "title": "Coordenação e contexto",
+          "concepts": "shared state, delegation, context budgets",
+          "activity": "Integrar resultados dos especialistas sem repetir grandes trechos.",
+          "deliverable": "Supervisor com síntese",
+          "acceptance": "Resposta final referencia evidências de ambos os caminhos"
+        },
+        {
+          "number": 4,
+          "title": "Aprovação humana",
+          "concepts": "HITL, approval gate, dry-run",
+          "activity": "Adicionar etapa obrigatória antes de qualquer alteração simulada.",
+          "deliverable": "Approval gate testável",
+          "acceptance": "Sem aprovação nada é executado; rejeição é auditada"
+        },
+        {
+          "number": 5,
+          "title": "Entrega: Investigation Workflow",
+          "concepts": "observabilidade, testes de fluxo",
+          "activity": "Demonstrar caso normal, erro parcial e rejeição de aprovação.",
+          "deliverable": "Workflow com roteiro de demo",
+          "acceptance": "3 cenários passam com trilha de eventos"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Arquitetura e decisões de engenharia",
+      "module_id": "m07",
+      "days": [
+        {
+          "number": 1,
+          "title": "Quando IA faz sentido",
+          "concepts": "determinístico versus probabilístico, requisitos",
+          "activity": "Mapear funcionalidades e decidir regras vs LLM vs busca.",
+          "deliverable": "Matriz de decisões",
+          "acceptance": "Toda função inteligente possui justificativa de IA"
+        },
+        {
+          "number": 2,
+          "title": "Arquitetura e contratos",
+          "concepts": "C4, componentes, fronteiras, APIs",
+          "activity": "Desenhar container/component diagram e responsabilidades.",
+          "deliverable": "C4 e contratos",
+          "acceptance": "Fluxos de dados e fronteiras de confiança explícitos"
+        },
+        {
+          "number": 3,
+          "title": "Escalabilidade e custo",
+          "concepts": "model routing, cache, concorrência, orçamento",
+          "activity": "Simular 3 cenários de custo/latência e política de fallback.",
+          "deliverable": "Planilha/tabela de trade-offs",
+          "acceptance": "Documenta ao menos 2 alternativas rejeitadas"
+        },
+        {
+          "number": 4,
+          "title": "Falhas e segurança",
+          "concepts": "threat modeling, PII, segredo, vendor lock-in",
+          "activity": "Identificar riscos em tools, dados externos, logs e providers.",
+          "deliverable": "Threat model e mitigação",
+          "acceptance": "Plano inclui restrições para prompt injection e exfiltração"
+        },
+        {
+          "number": 5,
+          "title": "Entrega: arquitetura AI-first",
+          "concepts": "ADRs, runbooks, SLOs",
+          "activity": "Publicar documentação de arquitetura consolidada.",
+          "deliverable": "Architecture package",
+          "acceptance": "Leitor externo explica componentes e decisões sem ajuda"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Avaliação e observabilidade",
+      "module_id": "m08",
+      "days": [
+        {
+          "number": 1,
+          "title": "Medidas de qualidade",
+          "concepts": "golden dataset, correctness, groundedness",
+          "activity": "Definir critérios humanos e automatizados para 20 cenários.",
+          "deliverable": "Rúbrica de avaliação",
+          "acceptance": "Critérios são reexecutáveis e não dependem só de LLM judge"
+        },
+        {
+          "number": 2,
+          "title": "Avaliar RAG e tools",
+          "concepts": "retrieval metrics, tool correctness",
+          "activity": "Construir suíte e coletar falsos positivos/negativos.",
+          "deliverable": "Testes de comportamento de IA",
+          "acceptance": "Roda contra mocks e reporta falhas com categoria"
+        },
+        {
+          "number": 3,
+          "title": "Logs, traces e custo",
+          "concepts": "trace id, latency, token count, redaction",
+          "activity": "Instrumentar request → retrieval → tools → response.",
+          "deliverable": "Traces estruturados",
+          "acceptance": "Trace é reconstruível sem registrar informação sensível"
+        },
+        {
+          "number": 4,
+          "title": "Security guardrails",
+          "concepts": "prompt injection, privilege boundary, rate limit",
+          "activity": "Simular instrução maliciosa em documento e tool output.",
+          "deliverable": "Checklist de ataque e defesa",
+          "acceptance": "Sistema trata texto recuperado como dado, não comando"
+        },
+        {
+          "number": 5,
+          "title": "Entrega: evaluation suite",
+          "concepts": "regression, baseline, release gates",
+          "activity": "Comparar 2 versões de prompt ou modelo com mesma base de testes.",
+          "deliverable": "Relatório de regressão e qualidade",
+          "acceptance": "Mostra resultados, custos aproximados e decisões de release"
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Integração do capstone",
+      "module_id": "m09",
+      "days": [
+        {
+          "number": 1,
+          "title": "Escopo e backlog congelado",
+          "concepts": "MVP, out-of-scope, acceptance tests",
+          "activity": "Definir funcionalidades obrigatórias e reduzir extras.",
+          "deliverable": "Capstone spec e checklist",
+          "acceptance": "5 funcionalidades principais com aceite explícito"
+        },
+        {
+          "number": 2,
+          "title": "Integrar interface e backend",
+          "concepts": "UI básica, contrato API, estados de erro",
+          "activity": "Adicionar UI mínima para perguntar e exibir evidências.",
+          "deliverable": "UI + API integrada",
+          "acceptance": "Usuário vê fonte e estado de execução em caso simples"
+        },
+        {
+          "number": 3,
+          "title": "Integrar RAG + MCP",
+          "concepts": "retrieval, tools, autorização",
+          "activity": "Executar caso que precisa de evidência documental e dado operacional.",
+          "deliverable": "Fluxo híbrido funcional",
+          "acceptance": "Resposta identifica de onde veio cada informação"
+        },
+        {
+          "number": 4,
+          "title": "Orquestrar investigação",
+          "concepts": "agent, memory, approvals",
+          "activity": "Conectar fluxo de agente à UI, com aprovação simulada.",
+          "deliverable": "Fluxo ponta a ponta",
+          "acceptance": "Ação crítica não ocorre sem aceite explícito"
+        },
+        {
+          "number": 5,
+          "title": "Estabilização",
+          "concepts": "smoke test, regression, bug triage",
+          "activity": "Rodar cenários happy/negative path e corrigir bugs críticos.",
+          "deliverable": "Capstone release candidate",
+          "acceptance": "Smoke test e suíte básica passam no modo mock"
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Validação, demonstração e publicação",
+      "module_id": "m09",
+      "days": [
+        {
+          "number": 1,
+          "title": "Reprodução em máquina limpa",
+          "concepts": "setup, environment, prerequisites",
+          "activity": "Simular clone limpo e seguir README do zero.",
+          "deliverable": "Guia de instalação testado",
+          "acceptance": "Modo mock roda sem chave e sem serviços pagos"
+        },
+        {
+          "number": 2,
+          "title": "Qualidade e segurança finais",
+          "concepts": "quality gates, least privilege, secrets",
+          "activity": "Rodar suíte, revisar logs, permissões e dependências.",
+          "deliverable": "Relatório técnico final",
+          "acceptance": "Nenhum secret é versionado e achados críticos tratados"
+        },
+        {
+          "number": 3,
+          "title": "Medições e limites",
+          "concepts": "latency, success rate, cost, failure modes",
+          "activity": "Executar cenários fixos e quantificar resultado.",
+          "deliverable": "Benchmark e limitations",
+          "acceptance": "Resultados distinguem execução mock de execução real"
+        },
+        {
+          "number": 4,
+          "title": "Demo e explicação de trade-offs",
+          "concepts": "storytelling, arquitetura, decisão técnica",
+          "activity": "Preparar demo do incidente e defesa das decisões.",
+          "deliverable": "Vídeo/roteiro de 5–10 minutos",
+          "acceptance": "Demo inclui falha controlada e aprovação humana"
+        },
+        {
+          "number": 5,
+          "title": "Publicação e retrospectiva",
+          "concepts": "release, changelog, roadmap",
+          "activity": "Marcar versão v0.1, concluir checklist e planejar próximo ciclo.",
+          "deliverable": "Capstone v0.1 + plano de evolução",
+          "acceptance": "Pessoa externa consegue executar e avaliar MVP"
+        }
+      ]
+    }
+  ]
+}

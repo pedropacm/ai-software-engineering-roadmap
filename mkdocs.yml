@@ -1,0 +1,115 @@
+site_name: AI Software Engineering Roadmap
+site_description: 12 semanas de engenharia de software com IA
+site_author: Comunidade de aprendizagem
+docs_dir: docs
+site_dir: site
+theme:
+  name: readthedocs
+  language: pt_BR
+plugins:
+  - search
+nav:
+  - Início: index.md
+  - Primeiros passos: quickstart.md
+  - Cronograma: roadmap.md
+  - Ambiente: environment.md
+  - Avaliação: assessment.md
+  - Fontes: references.md
+  - Capstone: capstone.md
+  - Manutenção: maintainers.md
+  - Aprofundamentos: lessons/index.md
+  - Módulos:
+      - 'Módulo 01 — Fundamentos de LLMs e avaliação inicial': modules/m01.md
+      - 'Módulo 02 — APIs de LLM e engenharia de contexto': modules/m02.md
+      - 'Módulo 03 — Desenvolvimento assistido por IA': modules/m03.md
+      - 'Módulo 04 — RAG e busca semântica': modules/m04.md
+      - 'Módulo 05 — Function calling e MCP': modules/m05.md
+      - 'Módulo 06 — Agentes e workflows com estado': modules/m06.md
+      - 'Módulo 07 — Arquitetura de sistemas de IA': modules/m07.md
+      - 'Módulo 08 — Avaliação, observabilidade e segurança': modules/m08.md
+      - 'Módulo 09 — Capstone e publicação': modules/m09.md
+  - Semanas:
+      - 'Semana 01':
+          - Visão geral: weeks/week-01/index.md
+          - 'Dia 01 — AI, ML e LLM em um mapa mental': weeks/week-01/day-01.md
+          - 'Dia 02 — Tokens, contexto e limites': weeks/week-01/day-02.md
+          - 'Dia 03 — Embeddings e transformers no nível de engenharia': weeks/week-01/day-03.md
+          - 'Dia 04 — Inferência e escolha de modelos': weeks/week-01/day-04.md
+          - 'Dia 05 — Entrega: LLM Playground': weeks/week-01/day-05.md
+      - 'Semana 02':
+          - Visão geral: weeks/week-02/index.md
+          - 'Dia 01 — Desenho de uma AI API': weeks/week-02/day-01.md
+          - 'Dia 02 — Prompt templates e exemplos': weeks/week-02/day-02.md
+          - 'Dia 03 — JSON Schema e validação': weeks/week-02/day-03.md
+          - 'Dia 04 — Resiliência e custo': weeks/week-02/day-04.md
+          - 'Dia 05 — Entrega: AI Gateway': weeks/week-02/day-05.md
+      - 'Semana 03':
+          - Visão geral: weeks/week-03/index.md
+          - 'Dia 01 — Especificar antes de gerar': weeks/week-03/day-01.md
+          - 'Dia 02 — Contexto de repositório e regras para agentes': weeks/week-03/day-02.md
+          - 'Dia 03 — Implementação em incrementos pequenos': weeks/week-03/day-03.md
+          - 'Dia 04 — Testes e refatoração assistidos': weeks/week-03/day-04.md
+          - 'Dia 05 — Entrega: revisão AI-first': weeks/week-03/day-05.md
+      - 'Semana 04':
+          - Visão geral: weeks/week-04/index.md
+          - 'Dia 01 — Desenhar pipeline de RAG': weeks/week-04/day-01.md
+          - 'Dia 02 — Chunking e metadados': weeks/week-04/day-02.md
+          - 'Dia 03 — Embeddings e persistência': weeks/week-04/day-03.md
+          - 'Dia 04 — Recuperação e ranking': weeks/week-04/day-04.md
+          - 'Dia 05 — Entrega: primeiro RAG': weeks/week-04/day-05.md
+      - 'Semana 05':
+          - Visão geral: weeks/week-05/index.md
+          - 'Dia 01 — Conjunto de avaliação': weeks/week-05/day-01.md
+          - 'Dia 02 — Chunking comparado': weeks/week-05/day-02.md
+          - 'Dia 03 — Hybrid search e filtros': weeks/week-05/day-03.md
+          - 'Dia 04 — Grounding e resistência a alucinação': weeks/week-05/day-04.md
+          - 'Dia 05 — Entrega: Documentation Assistant': weeks/week-05/day-05.md
+      - 'Semana 06':
+          - Visão geral: weeks/week-06/index.md
+          - 'Dia 01 — Function calling na prática': weeks/week-06/day-01.md
+          - 'Dia 02 — Ciclo completo de tool use': weeks/week-06/day-02.md
+          - 'Dia 03 — Fundamentos MCP': weeks/week-06/day-03.md
+          - 'Dia 04 — Conectar ferramentas do assistant': weeks/week-06/day-04.md
+          - 'Dia 05 — Entrega: segurança de tools': weeks/week-06/day-05.md
+      - 'Semana 07':
+          - Visão geral: weeks/week-07/index.md
+          - 'Dia 01 — Agent loop e quando evitá-lo': weeks/week-07/day-01.md
+          - 'Dia 02 — Planejamento e execução': weeks/week-07/day-02.md
+          - 'Dia 03 — Estado e memória limitada': weeks/week-07/day-03.md
+          - 'Dia 04 — Resiliência e cancelamento': weeks/week-07/day-04.md
+          - 'Dia 05 — Entrega: Incident Agent v1': weeks/week-07/day-05.md
+      - 'Semana 08':
+          - Visão geral: weeks/week-08/index.md
+          - 'Dia 01 — Do fluxo linear ao grafo': weeks/week-08/day-01.md
+          - 'Dia 02 — Agentes especialistas sob medida': weeks/week-08/day-02.md
+          - 'Dia 03 — Coordenação e contexto': weeks/week-08/day-03.md
+          - 'Dia 04 — Aprovação humana': weeks/week-08/day-04.md
+          - 'Dia 05 — Entrega: Investigation Workflow': weeks/week-08/day-05.md
+      - 'Semana 09':
+          - Visão geral: weeks/week-09/index.md
+          - 'Dia 01 — Quando IA faz sentido': weeks/week-09/day-01.md
+          - 'Dia 02 — Arquitetura e contratos': weeks/week-09/day-02.md
+          - 'Dia 03 — Escalabilidade e custo': weeks/week-09/day-03.md
+          - 'Dia 04 — Falhas e segurança': weeks/week-09/day-04.md
+          - 'Dia 05 — Entrega: arquitetura AI-first': weeks/week-09/day-05.md
+      - 'Semana 10':
+          - Visão geral: weeks/week-10/index.md
+          - 'Dia 01 — Medidas de qualidade': weeks/week-10/day-01.md
+          - 'Dia 02 — Avaliar RAG e tools': weeks/week-10/day-02.md
+          - 'Dia 03 — Logs, traces e custo': weeks/week-10/day-03.md
+          - 'Dia 04 — Security guardrails': weeks/week-10/day-04.md
+          - 'Dia 05 — Entrega: evaluation suite': weeks/week-10/day-05.md
+      - 'Semana 11':
+          - Visão geral: weeks/week-11/index.md
+          - 'Dia 01 — Escopo e backlog congelado': weeks/week-11/day-01.md
+          - 'Dia 02 — Integrar interface e backend': weeks/week-11/day-02.md
+          - 'Dia 03 — Integrar RAG + MCP': weeks/week-11/day-03.md
+          - 'Dia 04 — Orquestrar investigação': weeks/week-11/day-04.md
+          - 'Dia 05 — Estabilização': weeks/week-11/day-05.md
+      - 'Semana 12':
+          - Visão geral: weeks/week-12/index.md
+          - 'Dia 01 — Reprodução em máquina limpa': weeks/week-12/day-01.md
+          - 'Dia 02 — Qualidade e segurança finais': weeks/week-12/day-02.md
+          - 'Dia 03 — Medições e limites': weeks/week-12/day-03.md
+          - 'Dia 04 — Demo e explicação de trade-offs': weeks/week-12/day-04.md
+          - 'Dia 05 — Publicação e retrospectiva': weeks/week-12/day-05.md
