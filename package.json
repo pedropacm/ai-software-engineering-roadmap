@@ -1,0 +1,1 @@
+{"name":"llm-timeout-tests","version":"1.0.0","scripts":{"test":"jest --config jest.config.js --runTestsFromFiles"},"devDependencies":{"jest":"^29.7.0"}}
