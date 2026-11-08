@@ -4,6 +4,7 @@
 !.env.example
 .venv/
 .env.local
+.env.ollama.*
 *.pem
 *.key
 # Generated docs and runtime
